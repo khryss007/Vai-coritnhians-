@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança Digital: Matemática das Senhas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Segurança Digital</h1>
+            <p>Utilizando matemática para criar senhas seguras</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#matematica">Matemática das Senhas</a></li>
+                <li><a href="#ferramentas">Ferramentas</a></li>
+                <li><a href="#dicas">Dicas</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="introducao" class="card">
+            <h2>Por que senhas seguras são importantes?</h2>
+            <p>No mundo digital atual, senhas são a primeira linha de defesa contra invasores. Uma senha fraca pode comprometer não apenas uma conta, mas toda sua vida digital.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>81%</h3>
+                    <p>dos vazamentos de dados são causados por senhas fracas</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>&lt;1s</h3>
+                    <p>tempo para quebrar senhas comuns como "123456"</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>65%</h3>
+                    <p>das pessoas reutilizam senhas em múltiplas contas</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="matematica" class="card">
+            <h2>A Matemática por trás das senhas seguras</h2>
+            <p>A segurança de uma senha pode ser calculada matematicamente através da entropia, que mede a imprevisibilidade.</p>
+            
+            <div class="formula">
+                <p>Entropia (H) = L × log₂(N)</p>
+                <p>Onde:</p>
+                <ul>
+                    <li><strong>L</strong> = Comprimento da senha</li>
+                    <li><strong>N</strong> = Número de caracteres possíveis</li>
+                </ul>
+            </div>
+
+            <div class="password-examples">
+                <h3>Exemplos comparativos:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Senha</th>
+                            <th>Comprimento</th>
+                            <th>Caracteres</th>
+                            <th>Entropia (bits)</th>
+                            <th>Tempo para quebrar*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123456</td>
+                            <td>6</td>
+                            <td>10 (apenas números)</td>
+                            <td>19.9</td>
+                            <td>&lt;1 segundo</td>
+                        </tr>
+                        <tr>
+                            <td>Senha123</td>
+                            <td>8</td>
+                            <td>62 (letras maiúsculas, minúsculas e números)</td>
+                            <td>47.6</td>
+                            <td>2 dias</td>
+                        </tr>
+                        <tr>
+                            <td>G7#kPq9$</td>
+                            <td>8</td>
+                            <td>94 (todos caracteres ASCII)</td>
+                            <td>52.4</td>
+                            <td>1 ano</td>
+                        </tr>
+                        <tr>
+                            <td>cavalo-bateria-grampeador-correto</td>
+                            <td>28</td>
+                            <td>26 (apenas letras minúsculas)</td>
+                            <td>131.6</td>
+                            <td>10<sup>25</sup> anos</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="note">*Considerando 1.000 tentativas por segundo</p>
+            </div>
+        </section>
+
+        <section id="ferramentas" class="card">
+            <h2>Ferramentas de Segurança</h2>
+            
+            <div class="tool-section">
+                <h3>Verificador de Força de Senha</h3>
+                <div class="password-checker">
+                    <input type="password" id="password-input" placeholder="Digite uma senha para testar">
+                    <button id="check-btn">Verificar</button>
+                    <div class="strength-meter">
+                        <div class="strength-bar"></div>
+                    </div>
+                    <div class="strength-result">
+                        <p id="strength-text">Força: </p>
+                        <p id="entropy-text">Entropia: </p>
+                        <p id="time-to-crack">Tempo estimado para quebrar: </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-section">
+                <h3>Gerador de Senhas Seguras</h3>
+                <div class="password-generator">
+                    <div class="options">
+                        <label>
+                            <input type="number" id="length" min="8" max="64" value="12"> Comprimento
+                        </label>
+                        <label>
+                            <input type="checkbox" id="uppercase" checked> Maiúsculas (A-Z)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="lowercase" checked> Minúsculas (a-z)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="numbers" checked> Números (0-9)
+                        </label>
+                        <label>
+                            <input type="checkbox" id="symbols" checked> Símbolos (!@#$%^&*)
+                        </label>
+                    </div>
+                    <button id="generate-btn">Gerar Senha</button>
+                    <div class="result">
+                        <input type="text" id="generated-password" readonly>
+                        <button id="copy-btn">Copiar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dicas" class="card">
+            <h2>Dicas para Senhas Seguras</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>Comprimento é rei</h3>
+                    <p>Prefira senhas longas (mínimo 12 caracteres) em vez de complexas mas curtas.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-dice"></i>
+                    <h3>Use aleatoriedade</h3>
+                    <p>Senhas devem ser imprevisíveis. Evite sequências, palavras comuns ou dados pessoais.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-unique"></i>
+                    <h3>Única para cada conta</h3>
+                    <p>Nunca reuse senhas. Use um gerenciador de senhas se necessário.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Atualize regularmente</h3>
+                    <p>Mude senhas importantes a cada 3-6 meses, especialmente após vazamentos.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-user-lock"></i>
+                    <h3>Autenticação em dois fatores</h3>
+                    <p>Sempre ative 2FA quando disponível, mesmo com senhas fortes.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Use frases-senha</h3>
+                    <p>Combine 4-5 palavras aleatórias (ex: "cavalo-bateria-grampeador-correto").</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="card">
+            <h2>Sobre este Projeto</h2>
+            <p>Este projeto foi desenvolvido como parte do estudo sobre segurança digital e a aplicação de conceitos matemáticos na criação de senhas seguras.</p>
+            <p>O objetivo é demonstrar como a matemática está presente na segurança da informação e como podemos usar esses conceitos para proteger nossos dados.</p>
+            
+            <div class="credits">
+                <h3>Recursos e Referências</h3>
+                <ul>
+                    <li>NIST Special Publication 800-63B - Digital Identity Guidelines</li>
+                    <li>OWASP Password Storage Cheat Sheet</li>
+                    <li>Kaspersky Security Bulletin</li>
+                    <li>Have I Been Pwned - Statistics</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Projeto desenvolvido para a disciplina de Segurança Digital</p>
+            <p>© 2025 - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="js/password-strength.js"></script>
+    <script src="js/script.js"></script>
+</body>
+  </html>
